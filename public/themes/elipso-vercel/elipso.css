@@ -1,0 +1,730 @@
+:root {
+  --elipso-canvas: #07090e;
+  --elipso-canvas-soft: #0b0f19;
+  --elipso-canvas-soft-2: #131926;
+  --elipso-canvas-raised: #0f1420;
+  --elipso-ink: #f3f4f6;
+  --elipso-body: #94a3b8;
+  --elipso-muted: #64748b;
+  --elipso-hairline: #1e293b;
+  --elipso-hairline-strong: #334155;
+  --elipso-primary: #ffffff;
+  --elipso-on-primary: #000000;
+  --elipso-link: #3b82f6;
+  --elipso-link-deep: #2563eb;
+  --elipso-cyan: #50e3c2;
+  --elipso-success: #10b981;
+  --elipso-error: #ef4444;
+  --elipso-error-soft: rgb(239 68 68 / 0.1);
+  --elipso-warning: #f5a623;
+  --elipso-warning-soft: rgb(245 166 35 / 0.1);
+  --elipso-shadow-card: 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.4), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.05);
+  --elipso-shadow-panel: 0px 2px 4px rgba(0, 0, 0, 0.3), 0px 8px 16px -4px rgba(0, 0, 0, 0.5), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.05);
+  --elipso-mesh-a: rgba(0, 124, 240, 0.08);  /* Develop Blue */
+  --elipso-mesh-b: rgba(121, 40, 202, 0.05); /* Preview Violet */
+  --elipso-mesh-c: rgba(255, 77, 77, 0.04);  /* Ship Coral */
+  --elipso-terminal-bg: #07090e;
+  --elipso-terminal-fg: #f3f4f6;
+  --elipso-terminal-border: #1e293b;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--elipso-canvas);
+  color: var(--elipso-ink);
+  font-family: 'Geist', Inter, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--elipso-canvas) !important;
+  color: var(--elipso-body) !important;
+  font-family: 'Geist', Inter, system-ui, -apple-system, sans-serif !important;
+  letter-spacing: 0.015em;
+}
+
+body.elipso-mesh,
+body:has(.elipso-auth-shell) {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, var(--elipso-mesh-a) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 80% 15%, var(--elipso-mesh-b) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 25% at 50% 30%, var(--elipso-mesh-c) 0%, transparent 45%),
+    linear-gradient(180deg, var(--elipso-canvas), var(--elipso-canvas-soft) 40rem) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--elipso-ink) !important;
+  font-weight: 600 !important;
+  font-family: 'Geist', Inter, system-ui, sans-serif !important;
+}
+
+h1 {
+  letter-spacing: -0.05em !important;
+}
+
+h2 {
+  letter-spacing: -0.04em !important;
+}
+
+h3 {
+  letter-spacing: -0.03em !important;
+}
+
+p,
+span,
+label,
+li,
+td {
+  color: inherit;
+}
+
+th,
+.table th,
+[class*='TableHeader'],
+[class*='LabelMono'] {
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, monospace !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--elipso-muted) !important;
+}
+
+strong,
+b {
+  font-weight: 600 !important;
+}
+
+a {
+  color: inherit !important;
+  text-decoration: none;
+}
+
+p a,
+td a,
+.prose a,
+.content a,
+.alert a,
+.box a:not(.btn):not(.label):not(.badge),
+.card a:not(.btn):not(.label):not(.badge) {
+  color: var(--elipso-link) !important;
+}
+
+p a:hover,
+td a:hover,
+.content a:hover,
+.box a:not(.btn):not(.label):not(.badge):hover {
+  color: var(--elipso-link-deep) !important;
+  text-decoration: underline;
+}
+
+::selection {
+  background: var(--elipso-primary);
+  color: var(--elipso-on-primary);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--elipso-hairline-strong);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.elipso-mesh {
+  position: relative;
+}
+
+.elipso-canvas {
+  background: var(--elipso-canvas) !important;
+}
+
+body.elipso-mesh .elipso-canvas,
+body:has(.elipso-auth-shell) .elipso-canvas {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, var(--elipso-mesh-a) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 80% 15%, var(--elipso-mesh-b) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 25% at 50% 30%, var(--elipso-mesh-c) 0%, transparent 45%),
+    linear-gradient(180deg, var(--elipso-canvas), var(--elipso-canvas-soft) 42rem) !important;
+}
+
+body:has(.elipso-auth-shell) form {
+  position: relative;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+body:has(.elipso-auth-shell) form > div,
+body:has(.elipso-auth-shell) form > .w-full,
+body:has(.elipso-auth-shell) form > [class*='bg-white'],
+body:has(.elipso-auth-shell) form > [class*='shadow'] {
+  display: block !important;
+  max-width: 540px !important;
+  margin: 0 auto !important;
+  padding: 36px !important;
+  background: var(--elipso-canvas-raised) !important;
+  border: 1px solid var(--elipso-hairline) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--elipso-shadow-panel) !important;
+}
+
+body:has(.elipso-auth-shell) form > div > div:last-child {
+  width: 100% !important;
+  max-width: none !important;
+  flex: 1 1 auto !important;
+  margin: 0 !important;
+}
+
+body:has(.elipso-auth-shell) h2 {
+  max-width: 540px;
+  margin: 0 auto 20px !important;
+  font-size: 36px !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.035em !important;
+  text-align: left !important;
+}
+
+body:has(.elipso-auth-shell) form label,
+body:has(.elipso-auth-shell) form [class*='label'],
+body:has(.elipso-auth-shell) form .input-help {
+  color: var(--elipso-muted) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+body:has(.elipso-auth-shell) form .input-help.error {
+  color: var(--elipso-error) !important;
+}
+
+body:has(.elipso-auth-shell) form input,
+body:has(.elipso-auth-shell) form textarea,
+body:has(.elipso-auth-shell) form select {
+  height: 44px !important;
+  padding: 0 16px !important;
+  background: var(--elipso-canvas) !important;
+  border: 1px solid var(--elipso-hairline) !important;
+  border-radius: 8px !important;
+  color: var(--elipso-ink) !important;
+  box-shadow: none !important;
+}
+
+body:has(.elipso-auth-shell) form input:hover,
+body:has(.elipso-auth-shell) form textarea:hover,
+body:has(.elipso-auth-shell) form select:hover {
+  border-color: var(--elipso-hairline-strong) !important;
+}
+
+body:has(.elipso-auth-shell) form button[type='submit'],
+body:has(.elipso-auth-shell) form .btn-primary,
+body:has(.elipso-auth-shell) form [class*='bg-blue'] {
+  height: 44px !important;
+  margin-top: 10px !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e2e2 !important;
+  border-radius: 8px !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+}
+
+body:has(.elipso-auth-shell) form button[type='submit']:hover,
+body:has(.elipso-auth-shell) form .btn-primary:hover {
+  background: #e8e8e8 !important;
+  transform: none;
+}
+
+body:has(.elipso-auth-shell) form a[href*='password'],
+body:has(.elipso-auth-shell) form + p a,
+body:has(.elipso-auth-shell) > p a {
+  color: var(--elipso-muted) !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+body:has(.elipso-auth-shell) form a[href*='password']:hover {
+  color: var(--elipso-body) !important;
+  text-decoration: none;
+}
+
+body:has(.elipso-auth-shell) > p {
+  max-width: 540px;
+  margin: 18px auto 0 !important;
+  text-align: left !important;
+}
+
+/* Background overrides mapping to Vercel elevations */
+.bg-gray-950,
+.bg-neutral-950,
+.bg-slate-950,
+.bg-zinc-950,
+.bg-black {
+  background-color: var(--elipso-canvas) !important;
+}
+
+.bg-gray-900,
+.bg-neutral-900,
+.bg-slate-900,
+.bg-zinc-900 {
+  background-color: var(--elipso-canvas-soft) !important;
+}
+
+.bg-gray-800,
+.bg-neutral-800,
+.bg-slate-800,
+.bg-zinc-800 {
+  background-color: var(--elipso-canvas-soft-2) !important;
+}
+
+.bg-gray-700,
+.bg-neutral-700,
+.bg-slate-700,
+.bg-zinc-700 {
+  background-color: #1e293b !important;
+}
+
+.bg-gray-600,
+.bg-neutral-600,
+.bg-slate-600,
+.bg-zinc-600,
+.bg-gray-500,
+.bg-neutral-500,
+.bg-slate-500,
+.bg-zinc-500 {
+  background-color: #334155 !important;
+}
+
+.bg-white,
+.bg-light {
+  background-color: var(--elipso-canvas-soft) !important;
+  color: var(--elipso-ink) !important;
+}
+
+.text-gray-50,
+.text-gray-100,
+.text-neutral-100,
+.text-slate-100,
+.text-zinc-100,
+.text-white {
+  color: var(--elipso-ink) !important;
+}
+
+.text-gray-200,
+.text-neutral-200,
+.text-slate-200,
+.text-zinc-200,
+.text-gray-300,
+.text-neutral-300,
+.text-slate-300,
+.text-zinc-300 {
+  color: var(--elipso-body) !important;
+}
+
+.text-gray-400,
+.text-neutral-400,
+.text-slate-400,
+.text-zinc-400,
+.text-gray-500,
+.text-neutral-500,
+.text-slate-500,
+.text-zinc-500 {
+  color: var(--elipso-muted) !important;
+}
+
+.border-gray-950,
+.border-neutral-950,
+.border-slate-950,
+.border-zinc-950 {
+  border-color: var(--elipso-canvas) !important;
+}
+
+.border-gray-900,
+.border-neutral-900,
+.border-slate-900,
+.border-zinc-900 {
+  border-color: var(--elipso-hairline) !important;
+}
+
+.border-gray-800,
+.border-neutral-800,
+.border-slate-800,
+.border-zinc-800 {
+  border-color: #334155 !important;
+}
+
+.border-gray-700,
+.border-neutral-700,
+.border-slate-700,
+.border-zinc-700,
+.border,
+.border-top,
+.border-right,
+.border-bottom,
+.border-left {
+  border-color: var(--elipso-hairline-strong) !important;
+}
+
+div[class*='NavigationBar'],
+div[class*='navigation-bar'],
+header,
+nav,
+div[class*='SubNavigation'],
+div[class*='sub-navigation'],
+div[class*='ServerSubNavigation'],
+div[class*='NavigationRouter'],
+div[class*='SubNavBar'] {
+  background: color-mix(in srgb, var(--elipso-canvas) 92%, transparent) !important;
+  border-color: var(--elipso-hairline) !important;
+}
+
+div[class*='StatBlock'],
+div[class*='ServerDetails'],
+div[class*='NetworkStats'],
+div[class*='GreyRowBox'],
+div[class*='TitledGreyBox'] {
+  background: var(--elipso-canvas-raised) !important;
+  color: var(--elipso-ink) !important;
+  border: 1px solid var(--elipso-hairline) !important;
+  border-radius: 8px !important;
+  box-shadow: var(--elipso-shadow-card) !important;
+}
+
+.grid > div[class*='StatBlock'],
+.group > div[class*='StatBlock'] {
+  background: var(--elipso-canvas-raised) !important;
+  border-color: var(--elipso-hairline) !important;
+}
+
+div[class*='StatBlock'] {
+  position: relative;
+  overflow: hidden;
+  background: var(--elipso-canvas-raised) !important;
+}
+
+canvas + *,
+[class*='Chart'] {
+  color: var(--elipso-body) !important;
+}
+
+[class*='Chart'] > div,
+[class*='TitledGreyBox'] > div,
+[class*='NetworkStats'] > div {
+  background: transparent !important;
+  border-color: var(--elipso-hairline) !important;
+}
+
+div[class*='StatBlock']::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: var(--elipso-hairline-strong);
+  opacity: 0.6;
+}
+
+div[class*='StatBlock'] .status-bar {
+  background: var(--elipso-hairline-strong) !important;
+  opacity: 0.6 !important;
+  width: 3px !important;
+  right: 0 !important;
+}
+
+div[class*='StatBlock'] p,
+div[class*='StatBlock'] span {
+  color: var(--elipso-body) !important;
+}
+
+div[class*='StatBlock'] p:first-child {
+  color: var(--elipso-ink) !important;
+  font-weight: 600 !important;
+}
+
+div[class*='StatBlock'] svg {
+  color: var(--elipso-muted) !important;
+}
+
+div[class*='StatBlock'] .icon {
+  background: var(--elipso-canvas-soft-2) !important;
+  border: 1px solid var(--elipso-hairline) !important;
+}
+
+div[class*='StatBlock'] [class*='text-xs'],
+div[class*='StatBlock'] [class*='text-sm'] {
+  color: var(--elipso-muted) !important;
+}
+
+div[class*='StatBlock'] [class*='text-red'] {
+  color: var(--elipso-error) !important;
+}
+
+a[class*='GreyRowBox'],
+div[class*='GreyRowBox'],
+div[class*='TitledGreyBox'] {
+  background: var(--elipso-canvas-raised) !important;
+  border-radius: 8px !important;
+}
+
+a[class*='GreyRowBox'],
+div[class*='GreyRowBox'],
+div[class*='TitledGreyBox'] {
+  background: var(--elipso-canvas-raised) !important;
+  border-color: var(--elipso-hairline) !important;
+  color: var(--elipso-body) !important;
+}
+
+a[class*='GreyRowBox']:hover,
+div[class*='GreyRowBox']:hover {
+  background: var(--elipso-canvas-soft-2) !important;
+  border-color: var(--elipso-hairline-strong) !important;
+}
+
+a[class*='GreyRowBox'] svg,
+div[class*='GreyRowBox'] svg {
+  color: var(--elipso-muted) !important;
+}
+
+a[class*='GreyRowBox'] .icon,
+div[class*='GreyRowBox'] .icon {
+  background: var(--elipso-canvas-soft-2) !important;
+  border: 1px solid var(--elipso-hairline) !important;
+  color: var(--elipso-ink) !important;
+}
+
+a[class*='GreyRowBox']:hover,
+div[class*='GreyRowBox']:hover {
+  border-color: var(--elipso-hairline-strong) !important;
+}
+
+canvas {
+  background: transparent !important;
+}
+
+.xterm,
+.xterm-viewport,
+.xterm-screen,
+.CodeMirror {
+  background: var(--elipso-terminal-bg) !important;
+  color: var(--elipso-terminal-fg) !important;
+  border-color: var(--elipso-terminal-border) !important;
+}
+
+pre:not(.CodeMirror-line):not(.CodeMirror-placeholder) {
+  background: var(--elipso-terminal-bg) !important;
+  color: var(--elipso-terminal-fg) !important;
+  border-color: var(--elipso-terminal-border) !important;
+}
+
+.CodeMirror-gutters,
+.cm-s-default .CodeMirror-gutters,
+.cm-s-material .CodeMirror-gutters,
+.cm-s-ayu-mirage .CodeMirror-gutters {
+  background: var(--elipso-terminal-bg) !important;
+  border-right-color: var(--elipso-terminal-border) !important;
+}
+
+.CodeMirror-linenumber,
+.cm-s-ayu-mirage .CodeMirror-linenumber {
+  color: var(--elipso-muted) !important;
+}
+
+.CodeMirror-cursor,
+.cm-s-ayu-mirage .CodeMirror-cursor {
+  border-left: 1px solid var(--elipso-ink) !important;
+}
+
+.CodeMirror-activeline-background,
+.cm-s-ayu-mirage .CodeMirror-activeline-background {
+  background: rgb(255 255 255 / 0.025) !important;
+}
+
+.CodeMirror-selected,
+.cm-s-ayu-mirage .CodeMirror-selected,
+.CodeMirror-focused .CodeMirror-selected {
+  background: rgb(59 130 246 / 0.22) !important;
+}
+
+.CodeMirror-line::selection,
+.CodeMirror-line > span::selection,
+.CodeMirror-line > span > span::selection {
+  background: rgb(59 130 246 / 0.32) !important;
+  color: inherit !important;
+}
+
+.CodeMirror-matchingbracket,
+.cm-s-ayu-mirage .CodeMirror-matchingbracket {
+  color: var(--elipso-cyan) !important;
+  background: rgb(80 227 194 / 0.12) !important;
+}
+
+.CodeMirror-foldgutter,
+.CodeMirror-foldmarker {
+  color: var(--elipso-muted) !important;
+}
+
+.CodeMirror-foldmarker {
+  text-shadow: none !important;
+}
+
+.CodeMirror-guttermarker,
+.CodeMirror-guttermarker-subtle {
+  color: var(--elipso-muted) !important;
+}
+
+.CodeMirror-scrollbar-filler,
+.CodeMirror-gutter-filler {
+  background: var(--elipso-canvas-soft-2) !important;
+}
+
+input:not([type='checkbox']):not([type='radio']),
+textarea,
+select,
+.form-control {
+  background: var(--elipso-canvas-soft) !important;
+  color: var(--elipso-ink) !important;
+  border: 1px solid var(--elipso-hairline) !important;
+  border-radius: 6px !important;
+}
+
+input:not([type='checkbox']):not([type='radio']):hover,
+textarea:hover,
+select:hover,
+.form-control:hover {
+  border-color: var(--elipso-hairline-strong) !important;
+}
+
+input:not([type='checkbox']):not([type='radio']):focus,
+textarea:focus,
+select:focus,
+.form-control:focus {
+  border-color: var(--elipso-link) !important;
+  box-shadow: 0 0 0 2px rgb(59 130 246 / 0.15) !important;
+}
+
+button:not(.elipso-theme-toggle),
+.btn,
+.nav-tabs .nav-link,
+.page-link,
+.dropdown-item {
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+button,
+.btn {
+  font-family: 'Geist', Inter, system-ui, sans-serif !important;
+}
+
+/* Vercel-style Button Refinements */
+.btn-primary,
+button[type='submit']:not(.btn-secondary):not(.btn-danger) {
+  background-color: var(--elipso-primary) !important;
+  border-color: var(--elipso-primary) !important;
+  color: var(--elipso-on-primary) !important;
+  font-weight: 500 !important;
+}
+
+.btn-primary:hover,
+button[type='submit']:not(.btn-secondary):not(.btn-danger):hover {
+  background-color: #eaeaea !important;
+  border-color: #eaeaea !important;
+  color: var(--elipso-on-primary) !important;
+}
+
+.btn-secondary,
+.btn-default,
+button.btn-secondary,
+button.btn-default {
+  background-color: var(--elipso-canvas-soft) !important;
+  border: 1px solid var(--elipso-hairline) !important;
+  color: var(--elipso-ink) !important;
+}
+
+.btn-secondary:hover,
+.btn-default:hover {
+  background-color: var(--elipso-canvas-soft-2) !important;
+  border-color: var(--elipso-hairline-strong) !important;
+}
+
+/* Pterodactyl file manager CSS-module rows.
+   These classes are injected by the files chunk after the base stylesheet,
+   so this override must be both exact and important. */
+body.elipso-canvas .style-module_HHpjDvv7 {
+  background: var(--elipso-canvas-raised) !important;
+  background-color: var(--elipso-canvas-raised) !important;
+  border: 1px solid var(--elipso-hairline) !important;
+  border-radius: 8px !important;
+  color: var(--elipso-body) !important;
+  margin-bottom: 4px !important;
+}
+
+body.elipso-canvas .style-module_HHpjDvv7 > .style-module_le7taa7N,
+body.elipso-canvas .style-module_HHpjDvv7 > .style-module_le7taa7N > * {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+body.elipso-canvas .style-module_HHpjDvv7 .style-module_le7taa7N,
+body.elipso-canvas .style-module_HHpjDvv7 .style-module_le7taa7N span,
+body.elipso-canvas .style-module_HHpjDvv7 .style-module_le7taa7N a {
+  color: var(--elipso-body) !important;
+}
+
+/* File row checked/selected state */
+body.elipso-canvas .style-module_HHpjDvv7:has(input[type="checkbox"]:checked) {
+  background: color-mix(in srgb, var(--elipso-primary) 6%, var(--elipso-canvas-raised)) !important;
+  background-color: color-mix(in srgb, var(--elipso-primary) 6%, var(--elipso-canvas-raised)) !important;
+  border-color: color-mix(in srgb, var(--elipso-primary) 30%, var(--elipso-hairline)) !important;
+}
+
+body.elipso-canvas .style-module_HHpjDvv7:has(input[type="checkbox"]:checked) .style-module_le7taa7N,
+body.elipso-canvas .style-module_HHpjDvv7:has(input[type="checkbox"]:checked) .style-module_le7taa7N span,
+body.elipso-canvas .style-module_HHpjDvv7:has(input[type="checkbox"]:checked) .style-module_le7taa7N a {
+  color: var(--elipso-ink) !important;
+}
+
+/* File row hover — avoid hover state overlaying checked state */
+body.elipso-canvas .style-module_HHpjDvv7:hover:not(:has(input[type="checkbox"]:checked)) {
+  background: var(--elipso-canvas-soft-2) !important;
+  background-color: var(--elipso-canvas-soft-2) !important;
+  border-color: var(--elipso-hairline-strong) !important;
+  color: var(--elipso-ink) !important;
+}
+
+/* File manager checkbox — unchecked state */
+body.elipso-canvas .style-module_HHpjDvv7 input[type="checkbox"],
+body.elipso-canvas .style-module_fqm1ZNax input[type="checkbox"] {
+  border-color: var(--elipso-hairline-strong) !important;
+  background-color: transparent !important;
+}
+
+body.elipso-canvas .style-module_HHpjDvv7 input[type="checkbox"]:hover,
+body.elipso-canvas .style-module_fqm1ZNax input[type="checkbox"]:hover {
+  border-color: var(--elipso-primary) !important;
+}
+
+/* File manager checkbox — checked state */
+body.elipso-canvas .style-module_HHpjDvv7 input[type="checkbox"]:checked,
+body.elipso-canvas .style-module_fqm1ZNax input[type="checkbox"]:checked {
+  background-color: var(--elipso-link) !important;
+  border-color: var(--elipso-link) !important;
+  color: var(--elipso-link) !important;
+}
