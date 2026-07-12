@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_ZIP_URL="${REPO_ZIP_URL:-https://github.com/instax-dutta/elipso-theme/archive/refs/heads/main.zip}"
+REPO_ZIP_URL="${REPO_ZIP_URL:-https://github.com/dikxzstrdigital/theme/archive/refs/heads/main.zip}"
 DEFAULT_TMP_DIR="${TMPDIR:-/tmp}"
 SELF_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
